@@ -1,0 +1,2 @@
+FLASK_APP=car_collection_api
+FLASK_ENV=development
