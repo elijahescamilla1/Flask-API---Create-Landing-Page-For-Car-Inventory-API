@@ -13,7 +13,7 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
-    from app.auth.routes import auth
+    from car_collection_api.auth.routes import auth
     app.register_blueprint(auth, url_prefix='/auth')
 
     return app

@@ -1,4 +1,7 @@
-from car_application_api.app import create_app
+import sys
+print("Python Path:", sys.path)
+
+from car_collection_api.app import create_app
 
 app = create_app()
 
