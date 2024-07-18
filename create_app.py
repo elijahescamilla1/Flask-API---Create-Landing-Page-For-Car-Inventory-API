@@ -19,6 +19,7 @@ def create_app():
     login_manager.init_app(app)
     ma.init_app(app)
     migrate.init_app(app, db)
+    print("Initialized Extensions")
 
     from car_collection_api.auth.routes import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
@@ -30,4 +31,5 @@ def create_app():
 
 if __name__ == "__main__":
     app = create_app()
+    print("App Created")
     app.run(debug=True)

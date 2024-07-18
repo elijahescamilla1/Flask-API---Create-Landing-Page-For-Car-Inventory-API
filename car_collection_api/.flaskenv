@@ -1,2 +1,2 @@
-FLASK_APP=car_collection_api
+FLASK_APP=app.py
 FLASK_ENV=development
