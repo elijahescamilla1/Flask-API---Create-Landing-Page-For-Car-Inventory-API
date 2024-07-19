@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_login import login_required
 from .models import Car, db
 
@@ -11,17 +11,17 @@ def create_car():
     new_car = Car(make=data['make'], model=data['model'], year=data['year'])
     db.session.add(new_car)
     db.session.commit()
-    return 'Car created', 201
+    return jsonify({'message': 'Car created'}), 201
 
 @views.route('/cars', methods=['GET'])
 def get_cars():
     cars = Car.query.all()
-    return {'cars': [car.to_dict() for car in cars]}
+    return jsonify([car.to_dict() for car in cars]), 200
 
 @views.route('/cars/<int:id>', methods=['GET'])
 def get_car(id):
     car = Car.query.get_or_404(id)
-    return car.to_dict()
+    return jsonify(car.to_dict()), 200
 
 @views.route('/cars/<int:id>', methods=['PUT'])
 @login_required
@@ -32,7 +32,7 @@ def update_car(id):
     car.model = data['model']
     car.year = data['year']
     db.session.commit()
-    return 'Car updated', 200
+    return jsonify({'message': 'Car updated'}), 200
 
 @views.route('/cars/<int:id>', methods=['DELETE'])
 @login_required
@@ -40,4 +40,4 @@ def delete_car(id):
     car = Car.query.get_or_404(id)
     db.session.delete(car)
     db.session.commit()
-    return 'Car deleted', 200
+    return jsonify({'message': 'Car deleted'}), 200

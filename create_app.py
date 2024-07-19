@@ -1,8 +1,8 @@
 from flask import Flask
-from car_collection_api.models import db, User, Car
+from .models import db
 from flask_login import LoginManager
-from car_collection_api.auth import auth as auth_blueprint
-from car_collection_api.views import views as views_blueprint
+from .auth import auth as auth_blueprint
+from .views import views as views_blueprint
 
 def create_app():
     app = Flask(__name__)
