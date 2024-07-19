@@ -4,6 +4,14 @@ from .models import Car, db
 
 views = Blueprint('views', __name__)
 
+@views.route('/')
+def index():
+    return "Welcome to the Car Collection API"
+
+@views.route('/test', methods=['GET'])
+def test():
+    return "Test route is working!"
+
 @views.route('/cars', methods=['POST'])
 @login_required
 def create_car():
