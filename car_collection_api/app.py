@@ -6,6 +6,7 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 import os
 
+# Load environment variables from .env file
 load_dotenv()
 
 db = SQLAlchemy()

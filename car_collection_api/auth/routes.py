@@ -24,3 +24,11 @@ def login():
 def logout():
     logout_user()
     return jsonify({'message': 'Logged out successfully'}), 200
+
+@auth.route('/signup', methods=['GET', 'POST'])
+def signup():
+    data = request.get_json()
+    user = User(email=data['email'], password=generate_password_hash(data['password']))
+    db.session.add(user)
+    db.session.commit()
+    return jsonify({'message': 'User created successfully'}), 201
