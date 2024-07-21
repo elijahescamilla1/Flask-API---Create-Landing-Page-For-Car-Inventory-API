@@ -18,7 +18,8 @@ def create_app():
     def load_user(user_id):
         return User.query.get(int(user_id))
 
-    app.register_blueprint(auth_blueprint, url_prefix='/')
+    # Register blueprints
+    app.register_blueprint(auth_blueprint, url_prefix='/auth')
     app.register_blueprint(views_blueprint, url_prefix='/')
 
     with app.app_context():
