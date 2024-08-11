@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
-from yourapp.models import Car  # Adjust the import based on your project structure
-from yourapp import db
+from app.models import Car  # Importing the Car model from models.py
+from app import db  # Importing db from __init__.py
 
 car_bp = Blueprint('car', __name__)
 
